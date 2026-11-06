@@ -107,7 +107,7 @@ export default function CvPage() {
                 <p className="text-[14px] font-bold">Co-Founder · Undercraft Studio</p>
                 <p className="text-[11.5px] text-[#666]">{host(profile.undercraft)} · Websites, web apps & AI for businesses in Qatar and the Gulf</p>
                 <ul className="cv-ul mt-1">
-                  <li>Delivered e-commerce stores with admin panels and WhatsApp ordering (AD Online Store, MS Customize, K TECH Printing).</li>
+                  <li>Built e-commerce stores with admin panels, WhatsApp ordering, local payments and AI features (Zayvra, Inkora, Rayyan Fragrance).</li>
                   <li>Built a bilingual English / Arabic tailoring store with bookings and order tracking (Dar Al Zahra).</li>
                   <li>Built WordPress restaurant sites with Elementor and custom child themes, including online pickup ordering (Diwan Golconda, Momocha Hibachi).</li>
                 </ul>

@@ -1,20 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ui";
 
 const links = [
-  { href: "/#work", label: "Work" },
-  { href: "/#services", label: "Services" },
-  { href: "/#stack", label: "Skills" },
-  { href: "/#about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
+  { href: "/skills", label: "Skills" },
+  { href: "/about", label: "About" },
   { href: "/cv", label: "CV" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -44,7 +47,10 @@ export function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-3.5 py-2 text-sm text-muted transition hover:bg-card-2 hover:text-ink"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`rounded-full px-3.5 py-2 text-sm transition hover:bg-card-2 hover:text-ink ${
+                isActive(l.href) ? "bg-card-2 text-ink" : "text-muted"
+              }`}
             >
               {l.label}
             </Link>
@@ -53,7 +59,7 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link href="/#contact" className="btn btn-primary hidden !h-10 !px-4 !text-sm sm:inline-flex">
+          <Link href="/contact" className="btn btn-primary hidden !h-10 !px-4 !text-sm sm:inline-flex">
             Hire me
           </Link>
           <button
@@ -77,12 +83,13 @@ export function Nav() {
           aria-label="Mobile"
           className="mx-3 mt-2 rounded-3xl border border-line bg-[color-mix(in_oklab,var(--bg)_92%,transparent)] p-3 shadow-[var(--shadow)] backdrop-blur-xl md:hidden"
         >
-          {[...links, { href: "/#contact", label: "Hire me" }].map((l) => (
+          {[...links, { href: "/contact", label: "Hire me" }].map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block rounded-2xl px-4 py-3 text-base text-ink hover:bg-card-2"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`block rounded-2xl px-4 py-3 text-base text-ink hover:bg-card-2 ${isActive(l.href) ? "bg-card-2" : ""}`}
             >
               {l.label}
             </Link>

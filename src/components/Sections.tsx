@@ -125,15 +125,8 @@ export function Highlights({ liveCount }: { liveCount: number }) {
 
 export function Work() {
   return (
-    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="work-title" id="work">
+    <section className="pt-8 pb-24 sm:pb-32" aria-label="Case studies" id="work">
       <div className="container-x">
-        <SectionHead
-          id="work-title"
-          eyebrow="Selected work"
-          title="Real products,"
-          accent="live on the web."
-          sub="Six builds I am proud of: the problem, what I built and the stack. Every one is live, so open it and click around."
-        />
         <div className="flex flex-col gap-8 lg:gap-0">
           {caseStudies.map((c, i) => (
             <div key={c.slug} className="lg:sticky lg:pb-10" style={{ top: `${96 + i * 18}px` }}>
@@ -199,9 +192,12 @@ export function Work() {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-auto pt-7">
-                        <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary !h-11">
-                          Visit {hostOf(c.url)} <Arrow />
+                      <div className="mt-auto flex flex-wrap gap-3 pt-7">
+                        <Link href={`/work/${c.slug}`} className="btn btn-primary !h-11">
+                          Read case study <Arrow />
+                        </Link>
+                        <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
+                          Live site
                         </a>
                       </div>
                     </div>
@@ -240,11 +236,11 @@ export function MoreProjects() {
   );
 }
 
-export function Services() {
+export function Services({ head = true }: { head?: boolean }) {
   return (
-    <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-labelledby="services-title" id="services">
+    <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-label="Services" id="services">
       <div className="container-x">
-        <SectionHead id="services-title" eyebrow="Services" title="What I can build" accent="for you." />
+        {head && (<SectionHead id="services-title" eyebrow="Services" title="What I can build" accent="for you." />)}
         <div className="grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.title} delay={(i % 2) * 0.08} className="h-full">
@@ -284,17 +280,17 @@ export function Services() {
   );
 }
 
-export function Stack() {
+export function Stack({ head = true }: { head?: boolean }) {
   return (
-    <section className="py-24 sm:py-32" aria-labelledby="stack-title" id="stack">
+    <section className="py-24 sm:py-32" aria-label="Stack and skills" id="stack">
       <div className="container-x">
-        <SectionHead
+        {head && (<SectionHead
           id="stack-title"
           eyebrow="Stack & skills"
           title="The tools behind"
           accent="every build."
           sub="Used in production on the projects above, not just tutorials."
-        />
+        />)}
         <div className="grid gap-5 lg:grid-cols-2">
           {skillGroups.map((g, gi) => (
             <Reveal key={g.label} delay={(gi % 2) * 0.08} className={gi === 0 ? "lg:col-span-2" : ""}>
@@ -325,18 +321,18 @@ export function Stack() {
   );
 }
 
-export function Process() {
+export function Process({ head = true }: { head?: boolean }) {
   return (
-    <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-labelledby="process-title" id="process">
+    <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-label="How I work" id="process">
       <div className="container-x">
-        <SectionHead id="process-title" eyebrow="How I work" title="From first message" accent="to live URL." />
+        {head && (<SectionHead id="process-title" eyebrow="How I work" title="From first message" accent="to live URL." />)}
         <ProcessTimeline />
       </div>
     </section>
   );
 }
 
-export function About() {
+export function About({ head = true }: { head?: boolean }) {
   const facts = [
     ["Role", "Co-Founder, Undercraft Studio"],
     ["Brand", "Founder, Velcarro"],
@@ -346,7 +342,7 @@ export function About() {
     ["Languages", "English, Urdu"],
   ];
   return (
-    <section className="py-24 sm:py-32" aria-labelledby="about-title" id="about">
+    <section className="py-24 sm:py-32" aria-label="About" id="about">
       <div className="container-x grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <Reveal className="lg:sticky lg:top-28">
           <TiltPhoto className="mx-auto max-w-sm">
@@ -364,7 +360,7 @@ export function About() {
           </TiltPhoto>
         </Reveal>
         <div>
-          <SectionHead id="about-title" eyebrow="About" title="Builder first," accent="always shipping." />
+          {head && (<SectionHead id="about-title" eyebrow="About" title="Builder first," accent="always shipping." />)}
           <Reveal className="space-y-5 text-lg leading-relaxed text-muted">
             <p>
               I am <span className="font-medium text-ink">Abdul Rehman</span>, an AI web developer and agentic AI engineer from Karachi. I build
@@ -447,6 +443,159 @@ export function CvBlock() {
                   </div>
                 </div>
               </Link>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+
+export function PageHeader({ eyebrow, title, accent, sub, children }: { eyebrow: string; title: string; accent: string; sub?: string; children?: React.ReactNode }) {
+  return (
+    <section className="noise relative overflow-hidden pt-36 pb-14 sm:pt-44 sm:pb-20">
+      <div className="aurora opacity-80" aria-hidden>
+        <span className="a1" />
+        <span className="a2" />
+      </div>
+      <div className="grid-bg" aria-hidden />
+      <div className="container-x relative">
+        <Reveal>
+          <p className="eyebrow mb-5 inline-flex items-center gap-2">
+            <span className="h-px w-8 bg-accent" />
+            {eyebrow}
+          </p>
+          <h1 className="max-w-5xl text-[clamp(2.8rem,8vw,6.4rem)] leading-[0.92] font-semibold tracking-[-0.045em]">
+            {title} <span className="serif-i text-gradient">{accent}</span>
+          </h1>
+          {sub && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{sub}</p>}
+          {children}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function FeaturedWork() {
+  return (
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="featured-title">
+      <div className="container-x">
+        <div className="flex flex-wrap items-end justify-between gap-x-6">
+          <SectionHead id="featured-title" eyebrow="Selected work" title="Real products," accent="live on the web." />
+          <Reveal className="mb-12 sm:mb-16">
+            <Link href="/work" className="btn btn-ghost">
+              All projects <Arrow />
+            </Link>
+          </Reveal>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {caseStudies.map((c, i) => (
+            <Reveal key={c.slug} delay={(i % 2) * 0.08} className={i === 0 ? "md:col-span-2" : ""}>
+              <Link
+                href={`/work/${c.slug}`}
+                className="group card relative block h-full overflow-hidden transition duration-300 hover:border-line-2 hover:shadow-[var(--shadow)]"
+              >
+                <div className={`grid h-full ${i === 0 ? "lg:grid-cols-[1.4fr_1fr]" : ""}`}>
+                  <div className="relative overflow-hidden bg-bg-2">
+                    <Image
+                      src={c.image}
+                      alt={`Screenshot of ${c.name}`}
+                      width={1440}
+                      height={900}
+                      sizes={i === 0 ? "(min-width: 1024px) 700px, 100vw" : "(min-width: 768px) 600px, 100vw"}
+                      className="aspect-[16/10] h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-between gap-6 p-6 sm:p-8">
+                    <div>
+                      <p className="eyebrow text-accent">{c.kicker}</p>
+                      <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{c.name}</h3>
+                      <p className="mt-3 leading-relaxed text-muted">{c.summary}</p>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm text-muted">
+                        <span className="text-xl font-semibold text-ink">{c.facts[0].value}</span> {c.facts[0].label}
+                      </p>
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line transition group-hover:border-accent group-hover:bg-accent group-hover:text-accent-ink">
+                        <Arrow />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ServicesPreview() {
+  return (
+    <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-labelledby="sp-title">
+      <div className="container-x">
+        <div className="flex flex-wrap items-end justify-between gap-x-6">
+          <SectionHead id="sp-title" eyebrow="Services" title="What I can build" accent="for you." />
+          <Reveal className="mb-12 sm:mb-16">
+            <Link href="/services" className="btn btn-ghost">
+              All services <Arrow />
+            </Link>
+          </Reveal>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.06} className="h-full">
+              <Link
+                href="/services"
+                className="group card border-grad flex h-full flex-col p-6 transition hover:-translate-y-1.5 hover:shadow-[var(--shadow)]"
+              >
+                <div className="flex -space-x-2">
+                  {s.logos.slice(0, 3).map((l) => (
+                    <span key={l} className="skill-icon !h-12 !w-12 ring-4 ring-[var(--card)]" style={{ "--brand": brandColor(l) } as CSSProperties}>
+                      <Logo name={l} size={24} />
+                    </span>
+                  ))}
+                </div>
+                <h3 className="mt-6 text-xl font-semibold tracking-tight">{s.title}</h3>
+                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{s.body}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+                  Learn more <Arrow />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CtaBand() {
+  return (
+    <section className="pb-24 sm:pb-32" aria-labelledby="cta-title">
+      <div className="container-x">
+        <Reveal>
+          <div className="noise border-grad relative overflow-hidden rounded-[36px] border border-line bg-card px-7 py-16 text-center sm:px-14 sm:py-24">
+            <div className="aurora" aria-hidden>
+              <span className="a1" />
+              <span className="a2" />
+              <span className="a3" />
+            </div>
+            <div className="relative">
+              <p className="eyebrow">Have a project in mind?</p>
+              <h2 id="cta-title" className="mx-auto mt-5 max-w-4xl text-[clamp(2.6rem,7vw,5.6rem)] leading-[0.95] font-semibold tracking-[-0.045em]">
+                Let&apos;s build something <span className="serif-i text-gradient">people use.</span>
+              </h2>
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <Link href="/contact" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
+                  Start a project <Arrow />
+                </Link>
+                <Link href="/work" className="btn btn-ghost">
+                  See the work
+                </Link>
+              </div>
             </div>
           </div>
         </Reveal>

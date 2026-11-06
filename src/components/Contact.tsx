@@ -6,7 +6,8 @@ import { Arrow, GitHubIcon, LinkedInIcon, MailIcon, Reveal } from "./ui";
 
 const topics = ["AI agent / automation", "SaaS / web app", "E-commerce store", "WordPress site", "Something else"];
 
-export function Contact() {
+export function Contact({ page = false }: { page?: boolean }) {
+  const Heading = page ? "h1" : "h2";
   const [topic, setTopic] = useState(topics[0]);
   const [sent, setSent] = useState(false);
 
@@ -30,9 +31,9 @@ export function Contact() {
       <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <p className="eyebrow mb-4">Contact</p>
-          <h2 id="contact-title" className="text-[clamp(2.6rem,7vw,5.2rem)] leading-[0.95] font-semibold tracking-[-0.04em]">
+          <Heading id="contact-title" className="text-[clamp(2.6rem,7vw,5.2rem)] leading-[0.95] font-semibold tracking-[-0.04em]">
             Have an idea? <span className="serif-i text-gradient block">Let&apos;s build it.</span>
-          </h2>
+          </Heading>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
             Tell me what you need: an AI agent, a SaaS app, a store or a website.
           </p>

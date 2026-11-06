@@ -20,6 +20,9 @@ export type CaseStudy = {
   kicker: string;
   url: string;
   image: string;
+  mobile: string;
+  summary: string;
+  facts: { value: string; label: string }[];
   problem: string;
   built: string[];
   stack: string[];
@@ -32,6 +35,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "AI SaaS · Review management",
     url: "https://ai-review-writer.vercel.app",
     image: "/work/autoreview.jpg",
+    mobile: "/work/autoreview-m.jpg",
+    summary:
+      "A review-management SaaS that drafts on-brand AI replies a person approves before they go live.",
+    facts: [{ value: "1,500+", label: "automated tests" }, { value: "Human-approved", label: "AI replies, never auto-posted" }, { value: "Polar", label: "subscriptions & refunds" }],
     problem:
       "Restaurants, clinics, salons and repair shops get reviews every day, but nobody has time to answer each one well, and slow or angry replies cost them customers.",
     built: [
@@ -48,6 +55,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "My own brand · E-commerce",
     url: "https://velcarro.com",
     image: "/work/velcarro.jpg",
+    mobile: "/work/velcarro-m.jpg",
+    summary:
+      "My own premium online store, built from scratch and running in 12 languages.",
+    facts: [{ value: "12", label: "languages" }, { value: "RTL", label: "Arabic & Urdu layouts" }, { value: "Auto", label: "deploys on every push" }],
     problem:
       "I wanted a store that feels premium and works for shoppers anywhere, not a template that only speaks one language.",
     built: [
@@ -63,6 +74,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "Web app · Local businesses in Qatar",
     url: "https://jawab-desk-pro.vercel.app",
     image: "/work/jawab-desk.jpg",
+    mobile: "/work/jawab-desk-m.jpg",
+    summary:
+      "Google-profile and website care for service companies in Qatar, with a client portal and admin.",
+    facts: [{ value: "9", label: "built-in languages" }, { value: "Portal + admin", label: "for clients and staff" }, { value: "PDF", label: "monthly reports in AR / UR" }],
     problem:
       "AC and service companies in Qatar lose leads to wrong Google details, unanswered reviews and fake-review attacks, and their customers speak many different languages.",
     built: [
@@ -78,6 +93,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "SaaS · Email marketing",
     url: "https://rehman-mail.vercel.app",
     image: "/work/rehman-mail.jpg",
+    mobile: "/work/rehman-mail-m.jpg",
+    summary:
+      "An email-marketing SaaS: campaigns, automations and an AI copilot, sending through your own SMTP.",
+    facts: [{ value: "5", label: "free AI providers with fallback" }, { value: "Any SMTP", label: "you already own" }, { value: "RTL", label: "Urdu & Arabic templates" }],
     problem:
       "Small teams want Brevo-style campaigns without being locked into one sending provider or paying per contact.",
     built: [
@@ -93,6 +112,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "AI app · Field service",
     url: "https://siteproof-app.vercel.app",
     image: "/work/siteproof.jpg",
+    mobile: "/work/siteproof-m.jpg",
+    summary:
+      "A technician speaks in Urdu, Hindi or Malayalam; the client gets a signed English and Arabic report.",
+    facts: [{ value: "EN + AR", label: "signed job reports" }, { value: "Voice in", label: "Urdu, Hindi, Malayalam" }, { value: "No database", label: "data stays on the device" }],
     problem:
       "Technicians in the Gulf often speak Urdu, Hindi or Malayalam, but their clients expect a written job report in English and Arabic.",
     built: [
@@ -108,6 +131,10 @@ export const caseStudies: CaseStudy[] = [
     kicker: "Bilingual store · Tailoring house, Qatar",
     url: "https://daralzahra.vercel.app",
     image: "/work/dar-al-zahra.jpg",
+    mobile: "/work/dar-al-zahra-m.jpg",
+    summary:
+      "A bilingual English / Arabic store for a tailoring house in Qatar, with bookings and order tracking.",
+    facts: [{ value: "EN / AR", label: "full right-to-left" }, { value: "Bookings", label: "tailoring + order tracking" }, { value: "PWA", label: "installable, push alerts" }],
     problem:
       "A ladies clothing and tailoring house in Al Rayyan needed customers to browse, book tailoring and track orders in Arabic or English.",
     built: [
@@ -176,30 +203,6 @@ export const moreProjects: Project[] = [
     image: "/work/zayvra.jpg",
     blurb: "Fashion store for stitched and unstitched clothing, shoes and watches, with an advanced admin.",
     tags: ["Next.js", "Neon", "Clerk"],
-  },
-  {
-    name: "K TECH Printing",
-    category: "Store",
-    url: "https://ktechprinting.vercel.app",
-    image: "/work/ktech.jpg",
-    blurb: "Thermal paper and POS supplies store with product variants and WhatsApp ordering.",
-    tags: ["Next.js", "Neon", "E-commerce"],
-  },
-  {
-    name: "AD Online Store",
-    category: "Store",
-    url: "https://ad-online-store.vercel.app",
-    image: "/work/ad-store.jpg",
-    blurb: "Personalised gifts store: mugs, tees, keychains and frames made with your name or photo.",
-    tags: ["Next.js", "E-commerce"],
-  },
-  {
-    name: "MS Customize",
-    category: "Store",
-    url: "https://ms-customize.vercel.app",
-    image: "/work/ms-customize.jpg",
-    blurb: "Custom gifts collection store with dark and light themes and WhatsApp checkout.",
-    tags: ["Next.js", "E-commerce"],
   },
 ];
 

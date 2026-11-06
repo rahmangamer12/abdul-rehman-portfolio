@@ -172,12 +172,12 @@ export function Hero({ liveCount }: { liveCount: number }) {
 
             <motion.div {...up(1)} className="mt-9 flex flex-wrap gap-3">
               <Magnetic>
-                <Link href="/#contact" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
+                <Link href="/contact" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
                   Hire me <Arrow />
                 </Link>
               </Magnetic>
               <Magnetic>
-                <Link href="/#work" className="btn btn-ghost">
+                <Link href="/work" className="btn btn-ghost">
                   View work
                 </Link>
               </Magnetic>
