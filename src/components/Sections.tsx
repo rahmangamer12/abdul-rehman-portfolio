@@ -6,6 +6,7 @@ import { Arrow, Reveal, SpotlightCard } from "./ui";
 import { Logo, brandColor } from "./Logo";
 import { ProcessTimeline, ProjectGrid } from "./interactive";
 import { TiltPhoto } from "./Hero";
+import { AiBadge } from "./ai";
 
 function hostOf(url: string) {
   return new URL(url).hostname.replace(/^www\./, "");
@@ -171,6 +172,11 @@ export function Work() {
                         </span>
                       </div>
                       <h3 className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">{c.name}</h3>
+                      {c.ai && (
+                        <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted">
+                          <AiBadge ai={c.ai} /> {c.ai.job}
+                        </p>
+                      )}
                       <p className="mt-4 text-[15px] leading-relaxed text-muted">
                         <span className="font-semibold text-ink">The problem: </span>
                         {c.problem}
@@ -243,7 +249,7 @@ export function Services({ head = true }: { head?: boolean }) {
         {head && (<SectionHead id="services-title" eyebrow="Services" title="What I can build" accent="for you." />)}
         <div className="grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={(i % 2) * 0.08} className="h-full">
+            <Reveal key={s.title} delay={(i % 2) * 0.08} className={`h-full ${i === 0 ? "md:col-span-2" : ""}`}>
               <SpotlightCard className="border-grad group h-full p-7 sm:p-9">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex -space-x-2">
@@ -511,6 +517,7 @@ export function FeaturedWork() {
                     <div>
                       <p className="eyebrow text-accent">{c.kicker}</p>
                       <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{c.name}</h3>
+                      {c.ai && <AiBadge ai={c.ai} className="mt-3" />}
                       <p className="mt-3 leading-relaxed text-muted">{c.summary}</p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
@@ -544,9 +551,9 @@ export function ServicesPreview() {
             </Link>
           </Reveal>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06} className="h-full">
+            <Reveal key={s.title} delay={i * 0.06} className={`h-full ${i === 0 ? "sm:col-span-2" : ""}`}>
               <Link
                 href="/services"
                 className="group card border-grad flex h-full flex-col p-6 transition hover:-translate-y-1.5 hover:shadow-[var(--shadow)]"

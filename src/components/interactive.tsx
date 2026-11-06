@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 
 import type { Project } from "@/lib/data";
 import { steps } from "@/lib/data";
 import { Arrow } from "./ui";
+import { AiBadge } from "./ai";
 
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -83,8 +84,12 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
+                    {p.ai && <AiBadge ai={p.ai} />}
+                  </div>
                   <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{p.blurb}</p>
+                  {p.ai && <p className="mt-3 text-[13px] leading-relaxed text-faint">{p.ai.job}</p>}
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {p.tags.map((t) => (
                       <li key={t} className="rounded-full border border-line px-2.5 py-1 text-[11px] text-muted">

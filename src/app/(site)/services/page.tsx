@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CtaBand, PageHeader, Process, Services } from "@/components/Sections";
+import { AgentsVsWorkers } from "@/components/ai";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -17,6 +18,7 @@ export default function ServicesPage() {
         sub="From an AI agent that answers your customers to a full store in Arabic and English: designed, built, tested and deployed by one person."
       />
       <Services head={false} />
+      <AgentsVsWorkers id="agents-vs-workers" />
       <Process />
       <div className="pt-24 sm:pt-32">
         <CtaBand />

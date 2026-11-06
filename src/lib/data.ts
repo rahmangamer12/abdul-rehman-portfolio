@@ -14,7 +14,10 @@ export const profile = {
   velcarro: "https://velcarro.com",
 };
 
+export type AiRole = { kind: "worker" | "agent"; job: string };
+
 export type CaseStudy = {
+  ai?: AiRole;
   slug: string;
   name: string;
   kicker: string;
@@ -31,6 +34,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "autoreview",
+    ai: { kind: "worker", job: "Every night it pulls new Google and Facebook reviews and drafts a reply for each one. Nothing is posted until a person approves it." },
     name: "AutoReview AI",
     kicker: "AI SaaS · Review management",
     url: "https://ai-review-writer.vercel.app",
@@ -70,6 +74,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "jawab-desk",
+    ai: { kind: "agent", job: "Drafts review replies in the customer's own language when staff ask, and a person approves every reply." },
     name: "Jawab Desk Pro",
     kicker: "Web app · Local businesses in Qatar",
     url: "https://jawab-desk-pro.vercel.app",
@@ -89,6 +94,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "rehman-mail",
+    ai: { kind: "agent", job: "An AI copilot writes and plans campaigns when you ask. Sending and automations then run on their own schedule." },
     name: "Rehman Mail",
     kicker: "SaaS · Email marketing",
     url: "https://rehman-mail.vercel.app",
@@ -108,6 +114,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "siteproof",
+    ai: { kind: "agent", job: "Turns a technician's voice note and photos into a signed English and Arabic report, each time one is recorded." },
     name: "SiteProof",
     kicker: "AI app · Field service",
     url: "https://siteproof-app.vercel.app",
@@ -127,6 +134,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "dar-al-zahra",
+    ai: { kind: "agent", job: "An AI style assistant answers shoppers when they ask." },
     name: "Dar Al Zahra",
     kicker: "Bilingual store · Tailoring house, Qatar",
     url: "https://daralzahra.vercel.app",
@@ -147,6 +155,7 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export type Project = {
+  ai?: AiRole;
   name: string;
   url: string;
   image: string;
@@ -174,6 +183,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: "Renewlo",
+    ai: { kind: "agent", job: "Reads imported document lists and answers questions about your renewals when you ask." },
     category: "Web app",
     url: "https://renewlo.vercel.app",
     image: "/work/renewlo.jpg",
@@ -190,6 +200,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: "Inkora",
+    ai: { kind: "agent", job: "Suggests print designs and ideas when a customer asks." },
     category: "Store",
     url: "https://inkorastudio.vercel.app",
     image: "/work/inkora.jpg",
@@ -207,6 +218,12 @@ export const moreProjects: Project[] = [
 ];
 
 export const services = [
+  {
+    title: "AI workers for your business",
+    body: "An AI worker owns one job, like review replies, email campaigns or support, and does it every day on its own. It follows your rules, and a person approves anything risky before it goes out.",
+    points: ["Review replies, campaigns, support", "Runs daily on its own", "Human approves risky steps"],
+    logos: ["claude", "gemini", "groq", "mcp"],
+  },
   {
     title: "AI agents & automations",
     body: "Assistants, copilots and workflows built with the OpenAI Agents SDK, Claude and MCP: tools that read your data, take actions and hand off to a human when they should.",

@@ -24,7 +24,7 @@ const cvProjects = [
 const skills: [string, string[]][] = [
   ["Frontend", ["Next.js (App Router)", "React 19", "TypeScript", "Tailwind CSS", "Motion", "Three.js"]],
   ["Backend & data", ["Node.js", "Python", "PostgreSQL", "Neon", "Supabase", "Prisma", "Drizzle", "REST APIs"]],
-  ["AI & agents", ["OpenAI Agents SDK", "Claude", "MCP", "Gemini", "Groq", "Whisper", "Multi-model fallback"]],
+  ["AI & agents", ["AI workers (scheduled, human-approved)", "OpenAI Agents SDK", "Claude", "MCP", "Gemini", "Groq", "Whisper", "Multi-model fallback"]],
   ["Auth & payments", ["Clerk", "Better Auth", "Polar", "EasyPaisa / JazzCash flows", "WhatsApp ordering"]],
   ["Ship & CMS", ["Vercel", "GitHub", "Cloudflare", "Playwright", "SEO", "PWA", "WordPress", "Elementor", "Divi"]],
 ];
@@ -97,7 +97,8 @@ export default function CvPage() {
                 AI web developer and agentic AI engineer who builds complete products end to end: interface, database, authentication,
                 payments, AI features and deployment. Co-Founder of Undercraft Studio, working with businesses in Qatar and the Gulf, and
                 founder of the Velcarro online store. Ships production Next.js apps, AI agents and automations, multi-language and Arabic
-                right-to-left e-commerce, and WordPress sites.
+                right-to-left e-commerce, and WordPress sites. Builds AI workers: AI that owns one job, runs every day on its own and waits for a
+                person to approve anything risky (for example nightly review-reply drafts in AutoReview AI).
               </p>
             </section>
 

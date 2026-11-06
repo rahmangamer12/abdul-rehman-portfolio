@@ -7,6 +7,7 @@ import { caseStudies } from "@/lib/data";
 import { Arrow, Reveal } from "@/components/ui";
 import { Logo, brandColor } from "@/components/Logo";
 import { CtaBand } from "@/components/Sections";
+import { AiBadge } from "@/components/ai";
 
 const host = (u: string) => new URL(u).hostname.replace(/^www\./, "");
 
@@ -79,6 +80,15 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </p>
             <h1 className="mt-4 text-[clamp(3rem,9vw,7rem)] leading-[0.9] font-semibold tracking-[-0.05em]">{c.name}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{c.summary}</p>
+            {c.ai && (
+              <div className="mt-6 flex max-w-2xl flex-wrap items-center gap-3 rounded-2xl border border-line bg-card/60 p-4 backdrop-blur">
+                <AiBadge ai={c.ai} />
+                <p className="text-[15px] text-muted">
+                  <span className="font-medium text-ink">{c.ai.kind === "worker" ? "The job it owns: " : "What the AI does: "}</span>
+                  {c.ai.job}
+                </p>
+              </div>
+            )}
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
                 Visit {host(c.url)} <Arrow />
