@@ -12,15 +12,11 @@ function hostOf(url: string) {
   return new URL(url).hostname.replace(/^www\./, "");
 }
 
-function SectionHead({ id, eyebrow, title, accent, sub, center }: { id: string; eyebrow: string; title: string; accent: string; sub?: string; center?: boolean }) {
+function SectionHead({ id, title, accent, sub, center }: { id: string; title: string; accent: string; sub?: string; center?: boolean }) {
   return (
-    <Reveal className={`mb-12 max-w-3xl sm:mb-16 ${center ? "mx-auto text-center" : ""}`}>
-      <p className={`eyebrow mb-4 inline-flex items-center gap-2 ${center ? "justify-center" : ""}`}>
-        <span className="h-px w-8 bg-accent" />
-        {eyebrow}
-      </p>
+    <Reveal className={`mb-12 max-w-3xl border-t border-line pt-6 sm:mb-16 ${center ? "mx-auto text-center" : ""}`}>
       <h2 id={id} className="text-[clamp(2.3rem,5.8vw,4.4rem)] leading-[0.98] font-semibold tracking-[-0.04em]">
-        {title} <span className="serif-i text-accent">{accent}</span>
+        {title} <span className="block">{accent}</span>
       </h2>
       {sub && <p className={`mt-5 max-w-2xl text-lg leading-relaxed text-muted ${center ? "mx-auto" : ""}`}>{sub}</p>}
     </Reveal>
@@ -61,12 +57,12 @@ export function Highlights({ liveCount }: { liveCount: number }) {
   return (
     <section className="py-24 sm:py-32" aria-labelledby="why-title" id="why">
       <div className="container-x">
-        <SectionHead id="why-title" eyebrow="Why work with me" title="One developer," accent="the whole product." />
+        <SectionHead id="why-title" title="One developer," accent="the whole product." />
         <div className="grid gap-5 lg:grid-cols-6">
           <Reveal className="lg:col-span-4">
             <SpotlightCard className="border-grad h-full overflow-hidden p-7 sm:p-9">
-              <p className="eyebrow text-accent">End to end</p>
-              <h3 className="mt-3 max-w-md text-2xl font-semibold tracking-tight sm:text-3xl">From the first screen to the live URL, I build every layer.</h3>
+              <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">End to end</h3>
+              <p className="mt-3 max-w-md text-lg leading-snug sm:text-xl">From the first screen to the live URL, I build every layer.</p>
               <div className="pipe mt-10 overflow-hidden" style={{ "--pipe-w": "900px" } as CSSProperties}>
                 <ol className="relative z-10 flex flex-wrap items-center gap-2 sm:flex-nowrap sm:justify-between">
                   {highlights.pipeline.map((p, i) => (
@@ -82,16 +78,16 @@ export function Highlights({ liveCount }: { liveCount: number }) {
           </Reveal>
           <Reveal className="lg:col-span-2" delay={0.08}>
             <SpotlightCard className="flex h-full flex-col justify-between p-7 sm:p-9">
-              <p className="eyebrow text-accent">Proof</p>
+              <h3 className="text-xl font-semibold tracking-tight">Proof</h3>
               <div>
-                <p className="text-gradient text-[96px] leading-none font-semibold tracking-[-0.06em]">{liveCount}</p>
+                <p className="text-[96px] leading-none font-semibold tracking-[-0.06em] text-accent">{liveCount}</p>
                 <p className="mt-2 text-lg font-medium">live builds you can open right now</p>
               </div>
             </SpotlightCard>
           </Reveal>
           <Reveal className="lg:col-span-2" delay={0.04}>
             <SpotlightCard className="h-full p-7 sm:p-9">
-              <p className="eyebrow text-accent">Gulf-ready</p>
+              <h3 className="text-xl font-semibold tracking-tight">Gulf-ready</h3>
               <p dir="rtl" lang="ar" className="mt-5 text-5xl font-semibold">
                 عربي · اردو
               </p>
@@ -100,7 +96,7 @@ export function Highlights({ liveCount }: { liveCount: number }) {
           </Reveal>
           <Reveal className="lg:col-span-2" delay={0.08}>
             <SpotlightCard className="h-full p-7 sm:p-9">
-              <p className="eyebrow text-accent">AI-native</p>
+              <h3 className="text-xl font-semibold tracking-tight">AI-native</h3>
               <div className="mt-5 flex -space-x-2">
                 {["claude", "openai", "mcp", "gemini", "groq"].map((l) => (
                   <span key={l} className="skill-icon !h-12 !w-12 ring-4 ring-[var(--card)]" style={{ "--brand": brandColor(l) } as CSSProperties}>
@@ -113,7 +109,7 @@ export function Highlights({ liveCount }: { liveCount: number }) {
           </Reveal>
           <Reveal className="lg:col-span-2" delay={0.12}>
             <SpotlightCard className="h-full p-7 sm:p-9">
-              <p className="eyebrow text-accent">Built to last</p>
+              <h3 className="text-xl font-semibold tracking-tight">Built to last</h3>
               <p className="mt-4 text-5xl font-semibold tracking-tight">1,500+</p>
               <p className="mt-3 text-muted">automated tests in AutoReview AI. Typed code, real auth, real databases.</p>
             </SpotlightCard>
@@ -141,37 +137,24 @@ export function Work() {
                       className="group relative block overflow-hidden border-b border-line bg-bg-2 p-4 sm:p-6 lg:border-r lg:border-b-0"
                       aria-label={`Open ${c.name} live site (opens in a new tab)`}
                     >
-                      <div className="aurora !inset-0 opacity-40" aria-hidden>
-                        <span className="a1" />
-                      </div>
-                      <div className="relative overflow-hidden rounded-xl border border-line bg-bg shadow-[var(--shadow)]">
-                        <div className="flex h-8 items-center gap-1.5 border-b border-line px-3">
-                          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                          <span className="ml-3 truncate rounded-md bg-card-2 px-2 py-0.5 font-mono text-[11px] text-faint">{hostOf(c.url)}</span>
-                        </div>
+                      <figure className="relative overflow-hidden rounded-xl border border-line bg-bg shadow-[var(--shadow)] transition-colors duration-300 group-hover:border-accent">
                         <Image
                           src={c.image}
                           alt={`Screenshot of ${c.name}`}
                           width={1440}
                           height={900}
                           sizes="(min-width: 1024px) 620px, 100vw"
-                          className="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                          className="aspect-[16/10] w-full object-cover object-top"
                         />
-                      </div>
+                        <figcaption className="truncate border-t border-line px-3 py-2 text-[13px] text-muted">{hostOf(c.url)}</figcaption>
+                      </figure>
                       <span className="absolute right-8 bottom-8 hidden items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink opacity-0 transition group-hover:opacity-100 sm:inline-flex">
-                        Open live site <Arrow />
+                        Open live site
                       </span>
                     </a>
                     <div className="flex flex-col p-6 sm:p-8">
-                      <div className="flex items-center justify-between gap-4">
-                        <p className="eyebrow text-accent">{c.kicker}</p>
-                        <span className="outline-text font-mono text-5xl font-bold" aria-hidden>
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                      <h3 className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">{c.name}</h3>
+                      <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">{c.name}</h3>
+                      <p className="mt-2 text-[15px] font-medium text-accent">{c.kicker}</p>
                       {c.ai && (
                         <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted">
                           <AiBadge ai={c.ai} /> {c.ai.job}
@@ -200,7 +183,7 @@ export function Work() {
                       </ul>
                       <div className="mt-auto flex flex-wrap gap-3 pt-7">
                         <Link href={`/work/${c.slug}`} className="btn btn-primary !h-11">
-                          Read case study <Arrow />
+                          Read case study
                         </Link>
                         <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-11">
                           Live site
@@ -224,16 +207,12 @@ export function MoreProjects() {
       <div className="container-x">
         <Reveal className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="eyebrow mb-3 inline-flex items-center gap-2">
-              <span className="h-px w-8 bg-accent" />
-              More projects
-            </p>
             <h2 id="more-title" className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Websites, stores <span className="serif-i text-accent">and more</span>
+              Websites, stores and more
             </h2>
           </div>
           <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-sm text-muted underline-offset-4 hover:text-ink hover:underline">
-            More on GitHub →
+            More on GitHub
           </a>
         </Reveal>
         <ProjectGrid projects={moreProjects} />
@@ -246,33 +225,29 @@ export function Services({ head = true }: { head?: boolean }) {
   return (
     <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-label="Services" id="services">
       <div className="container-x">
-        {head && (<SectionHead id="services-title" eyebrow="Services" title="What I can build" accent="for you." />)}
+        {head && (<SectionHead id="services-title" title="What I can build" accent="for you." />)}
         <div className="grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.title} delay={(i % 2) * 0.08} className={`h-full ${i === 0 ? "md:col-span-2" : ""}`}>
               <SpotlightCard className="border-grad group h-full p-7 sm:p-9">
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-4">
                   <div className="flex -space-x-2">
                     {s.logos.map((l) => (
                       <span
                         key={l}
-                        className="skill-icon !h-14 !w-14 ring-4 ring-[var(--card)] transition group-hover:!rotate-0"
+                        className="skill-icon !h-14 !w-14 ring-4 ring-[var(--card)]"
                         style={{ "--brand": brandColor(l) } as CSSProperties}
                       >
                         <Logo name={l} size={28} />
                       </span>
                     ))}
                   </div>
-                  <span className="outline-text font-mono text-5xl font-bold" aria-hidden>
-                    0{i + 1}
-                  </span>
                 </div>
                 <h3 className="mt-8 text-2xl font-semibold tracking-tight sm:text-3xl">{s.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted">{s.body}</p>
                 <ul className="mt-6 grid gap-2 sm:grid-cols-3">
                   {s.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2 rounded-xl border border-line bg-card-2 px-3 py-2.5 text-[13px] font-medium">
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <li key={p} className="rounded-xl border border-line bg-card-2 px-3 py-2.5 text-[13px] font-medium">
                       {p}
                     </li>
                   ))}
@@ -292,7 +267,6 @@ export function Stack({ head = true }: { head?: boolean }) {
       <div className="container-x">
         {head && (<SectionHead
           id="stack-title"
-          eyebrow="Stack & skills"
           title="The tools behind"
           accent="every build."
           sub="Used in production on the projects above, not just tutorials."
@@ -331,7 +305,7 @@ export function Process({ head = true }: { head?: boolean }) {
   return (
     <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-label="How I work" id="process">
       <div className="container-x">
-        {head && (<SectionHead id="process-title" eyebrow="How I work" title="From first message" accent="to live URL." />)}
+        {head && (<SectionHead id="process-title" title="From first message" accent="to live URL." />)}
         <ProcessTimeline />
       </div>
     </section>
@@ -366,7 +340,7 @@ export function About({ head = true }: { head?: boolean }) {
           </TiltPhoto>
         </Reveal>
         <div>
-          {head && (<SectionHead id="about-title" eyebrow="About" title="Builder first," accent="always shipping." />)}
+          {head && (<SectionHead id="about-title" title="Builder first," accent="always shipping." />)}
           <Reveal className="space-y-5 text-lg leading-relaxed text-muted">
             <p>
               I am <span className="font-medium text-ink">Abdul Rehman</span>, an AI web developer and agentic AI engineer from Karachi. I build
@@ -411,21 +385,17 @@ export function CvBlock() {
     <section className="pb-24 sm:pb-32" aria-labelledby="cv-title" id="cv">
       <div className="container-x">
         <Reveal>
-          <div className="noise border-grad relative overflow-hidden rounded-[32px] border border-line bg-card p-8 sm:p-14">
-            <div className="aurora opacity-60" aria-hidden>
-              <span className="a2" />
-              <span className="a1" />
-            </div>
+          <div className="border-grad relative overflow-hidden rounded-[32px] border border-line bg-card p-8 sm:p-14">
             <div className="relative grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
               <div>
-                <p className="eyebrow mb-3">Curriculum vitae</p>
                 <h2 id="cv-title" className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                  The short version, <span className="serif-i text-accent">on paper.</span>
+                  Curriculum vitae
                 </h2>
+                <p className="mt-4 text-xl font-medium sm:text-2xl">The short version, on paper.</p>
                 <p className="mt-4 max-w-lg text-muted">Two A4 pages: summary, roles, selected projects with live links, skills and training. Ready to forward.</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="/cv" className="btn btn-primary">
-                    View CV <Arrow />
+                    View CV
                   </Link>
                   <a href="/Abdul-Rehman-CV.pdf" download className="btn btn-ghost">
                     Download PDF
@@ -434,20 +404,16 @@ export function CvBlock() {
               </div>
               <Link href="/cv" aria-label="Open the CV" className="group relative mx-auto block w-full max-w-[300px]">
                 <div className="absolute inset-0 translate-x-4 translate-y-4 rotate-3 rounded-2xl border border-line bg-card-2" aria-hidden />
-                <div className="relative -rotate-2 rounded-2xl bg-white p-5 shadow-[var(--shadow)] transition duration-500 group-hover:rotate-0">
-                  <div className="flex items-center gap-3">
-                    <Image src="/abdul-rehman-glasses.jpg" alt="" width={48} height={48} className="h-12 w-12 rounded-full object-cover" />
-                    <div>
-                      <p className="text-sm font-bold text-[#111]">Abdul Rehman</p>
-                      <p className="text-[10px] font-semibold text-[#4f7a00]">AI Web Developer & Agentic AI Engineer</p>
-                    </div>
-                  </div>
-                  <div className="mt-4 space-y-1.5" aria-hidden>
-                    {[100, 92, 96, 70, 0, 85, 98, 60, 0, 90, 75].map((w, i) =>
-                      w ? <div key={i} className="h-1.5 rounded bg-[#e6e6e6]" style={{ width: `${w}%` }} /> : <div key={i} className="h-2 w-1/3 rounded bg-[#c8ff4d]" />,
-                    )}
-                  </div>
-                </div>
+                <figure className="relative -rotate-2 overflow-hidden rounded-2xl border border-line bg-cv-paper shadow-[var(--shadow)] transition-transform duration-500 group-hover:rotate-0">
+                  <Image
+                    src="/cv-page-1.jpg"
+                    alt="First page of Abdul Rehman's CV"
+                    width={600}
+                    height={850}
+                    sizes="300px"
+                    className="w-full"
+                  />
+                </figure>
               </Link>
             </div>
           </div>
@@ -458,23 +424,19 @@ export function CvBlock() {
 }
 
 
-export function PageHeader({ eyebrow, title, accent, sub, children }: { eyebrow: string; title: string; accent: string; sub?: string; children?: React.ReactNode }) {
+export function PageHeader({ meta, title, accent, sub, children }: { meta?: string; title: string; accent: string; sub?: string; children?: React.ReactNode }) {
   return (
-    <section className="noise relative overflow-hidden pt-36 pb-14 sm:pt-44 sm:pb-20">
+    <section className="relative overflow-hidden pt-36 pb-14 sm:pt-44 sm:pb-20">
       <div className="aurora opacity-80" aria-hidden>
         <span className="a1" />
         <span className="a2" />
       </div>
-      <div className="grid-bg" aria-hidden />
       <div className="container-x relative">
         <Reveal>
-          <p className="eyebrow mb-5 inline-flex items-center gap-2">
-            <span className="h-px w-8 bg-accent" />
-            {eyebrow}
-          </p>
           <h1 className="max-w-5xl text-[clamp(2.8rem,8vw,6.4rem)] leading-[0.92] font-semibold tracking-[-0.045em]">
-            {title} <span className="serif-i text-gradient">{accent}</span>
+            {title} <span className="block">{accent}</span>
           </h1>
+          {meta && <p className="mt-6 text-lg font-medium text-accent">{meta}</p>}
           {sub && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{sub}</p>}
           {children}
         </Reveal>
@@ -488,10 +450,10 @@ export function FeaturedWork() {
     <section className="border-t border-line py-24 sm:py-32" aria-labelledby="featured-title">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-x-6">
-          <SectionHead id="featured-title" eyebrow="Selected work" title="Real products," accent="live on the web." />
+          <SectionHead id="featured-title" title="Real products," accent="live on the web." />
           <Reveal className="mb-12 sm:mb-16">
             <Link href="/work" className="btn btn-ghost">
-              All projects <Arrow />
+              All projects
             </Link>
           </Reveal>
         </div>
@@ -510,13 +472,13 @@ export function FeaturedWork() {
                       width={1440}
                       height={900}
                       sizes={i === 0 ? "(min-width: 1024px) 700px, 100vw" : "(min-width: 768px) 600px, 100vw"}
-                      className="aspect-[16/10] h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]"
+                      className="aspect-[16/10] h-full w-full object-cover object-top"
                     />
                   </div>
                   <div className="flex flex-col justify-between gap-6 p-6 sm:p-8">
                     <div>
-                      <p className="eyebrow text-accent">{c.kicker}</p>
-                      <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{c.name}</h3>
+                      <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{c.name}</h3>
+                      <p className="mt-2 text-[15px] font-medium text-accent">{c.kicker}</p>
                       {c.ai && <AiBadge ai={c.ai} className="mt-3" />}
                       <p className="mt-3 leading-relaxed text-muted">{c.summary}</p>
                     </div>
@@ -544,10 +506,10 @@ export function ServicesPreview() {
     <section className="border-t border-line bg-bg-2/40 py-24 sm:py-32" aria-labelledby="sp-title">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-x-6">
-          <SectionHead id="sp-title" eyebrow="Services" title="What I can build" accent="for you." />
+          <SectionHead id="sp-title" title="What I can build" accent="for you." />
           <Reveal className="mb-12 sm:mb-16">
             <Link href="/services" className="btn btn-ghost">
-              All services <Arrow />
+              All services
             </Link>
           </Reveal>
         </div>
@@ -556,7 +518,7 @@ export function ServicesPreview() {
             <Reveal key={s.title} delay={i * 0.06} className={`h-full ${i === 0 ? "sm:col-span-2" : ""}`}>
               <Link
                 href="/services"
-                className="group card border-grad flex h-full flex-col p-6 transition hover:-translate-y-1.5 hover:shadow-[var(--shadow)]"
+                className="group card border-grad flex h-full flex-col p-6 transition-[border-color,box-shadow] duration-300 hover:border-line-2 hover:shadow-[var(--shadow)]"
               >
                 <div className="flex -space-x-2">
                   {s.logos.slice(0, 3).map((l) => (
@@ -567,9 +529,7 @@ export function ServicesPreview() {
                 </div>
                 <h3 className="mt-6 text-xl font-semibold tracking-tight">{s.title}</h3>
                 <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{s.body}</p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
-                  Learn more <Arrow />
-                </span>
+                <span className="mt-5 text-sm font-medium text-accent underline-offset-4 group-hover:underline">Learn more</span>
               </Link>
             </Reveal>
           ))}
@@ -584,20 +544,15 @@ export function CtaBand() {
     <section className="pb-24 sm:pb-32" aria-labelledby="cta-title">
       <div className="container-x">
         <Reveal>
-          <div className="noise border-grad relative overflow-hidden rounded-[36px] border border-line bg-card px-7 py-16 text-center sm:px-14 sm:py-24">
-            <div className="aurora" aria-hidden>
-              <span className="a1" />
-              <span className="a2" />
-              <span className="a3" />
-            </div>
+          <div className="border-grad relative overflow-hidden rounded-[36px] border border-line bg-card px-7 py-16 text-center sm:px-14 sm:py-24">
             <div className="relative">
-              <p className="eyebrow">Have a project in mind?</p>
-              <h2 id="cta-title" className="mx-auto mt-5 max-w-4xl text-[clamp(2.6rem,7vw,5.6rem)] leading-[0.95] font-semibold tracking-[-0.045em]">
-                Let&apos;s build something <span className="serif-i text-gradient">people use.</span>
+              <h2 id="cta-title" className="mx-auto max-w-4xl text-[clamp(2.6rem,7vw,5.6rem)] leading-[0.95] font-semibold tracking-[-0.045em]">
+                Let&apos;s build something people use.
               </h2>
+              <p className="mx-auto mt-6 max-w-xl text-lg text-muted sm:text-xl">Have a project in mind?</p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Link href="/contact" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
-                  Start a project <Arrow />
+                <Link href="/contact" className="btn btn-primary">
+                  Start a project
                 </Link>
                 <Link href="/work" className="btn btn-ghost">
                   See the work

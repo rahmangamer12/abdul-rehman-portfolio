@@ -11,7 +11,6 @@ export default function SkillsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Stack & skills"
         title="The tools behind"
         accent="every build."
         sub="Used in production on the projects in my work, not just in tutorials."

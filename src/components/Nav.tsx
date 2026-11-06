@@ -29,7 +29,7 @@ export function Nav() {
   return (
     <header className="no-print fixed inset-x-0 top-0 z-50">
       <div
-        className={`mx-auto mt-3 flex h-14 max-w-[1200px] items-center justify-between rounded-full px-3 transition-all duration-300 sm:px-4 ${
+        className={`mx-auto mt-3 flex h-14 max-w-[1200px] items-center justify-between rounded-full px-3 transition-[background-color,border-color,box-shadow] duration-300 sm:px-4 ${
           scrolled || open
             ? "mx-3 border border-line bg-[color-mix(in_oklab,var(--bg)_78%,transparent)] shadow-[var(--shadow)] backdrop-blur-xl sm:mx-auto"
             : "border border-transparent"

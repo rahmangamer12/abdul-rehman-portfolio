@@ -1,4 +1,10 @@
+/* Hallmark · shape: kept · genre: atmospheric · theme: brand · redesign: restyle
+ * paper: oklch(13% 0.006 265) dark, oklch(96.5% 0.008 100) light · accent: oklch(93% 0.2 125) lime, oklch(52% 0.14 128) on light · display: Geist · body: Geist · hero: kept (split, name left, portrait right) · nav: kept (floating pill) · footer: kept (wordmark mast) · signature: the real portrait in one lime ring beside the name, then real screenshots of live products
+ * axes: dark/grotesk-sans/chromatic-lime · posture: split · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P3 H4 E4 S4 R4 V3 · weakest: P, a kept layout cannot argue much; spent the pass taking tells out (eyebrows, tracked caps, italic accent words, gradient text, glass, drawn browser bars, purple-to-blue ramps, image zoom) so the photo and the real screenshots carry the page */
 @import "tailwindcss";
+@import "./tokens.css";
+@import "./base.css" layer(base);
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -17,18 +23,29 @@
   --accent-ink: #0b0d05;
   --accent-soft: rgba(200, 255, 77, 0.12);
   --violet: #8a7dff;
-  --cyan: #4de1ff;
   --glow-a: rgba(200, 255, 77, 0.35);
   --glow-b: rgba(138, 125, 255, 0.45);
-  --glow-c: rgba(77, 225, 255, 0.3);
+  --glow-n: rgba(160, 170, 200, 0.16);
   --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  --mask: #000;
+  --device: #1b1d24;
+  --cv-paper: #fdfdfb;
+  --cv-ink: #1a1b20;
+  --cv-band: #0c0d12;
+  --cv-band-ink: #f6f6f2;
+  --cv-accent: #3f6300;
+  --cv-lime: #c8ff4d;
+  --cv-rule: #e3e3e3;
+  --cv-strip: #f6f7f2;
+  --cv-soft: #f1f3ea;
+  --cv-muted: #5f6168;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
   --bg: #f5f4ef;
   --bg-2: #ecebe4;
-  --card: #ffffff;
+  --card: #fdfdf9;
   --card-2: #f8f7f2;
   --line: rgba(10, 12, 20, 0.09);
   --line-2: rgba(10, 12, 20, 0.16);
@@ -36,13 +53,12 @@
   --muted: #565964;
   --faint: #7d808a;
   --accent: #4f7a00;
-  --accent-ink: #ffffff;
+  --accent-ink: #fafcf3;
   --accent-soft: rgba(79, 122, 0, 0.1);
   --violet: #5a4be0;
-  --cyan: #0a8fb0;
   --glow-a: rgba(160, 220, 40, 0.35);
   --glow-b: rgba(120, 105, 255, 0.28);
-  --glow-c: rgba(40, 190, 230, 0.22);
+  --glow-n: rgba(60, 70, 100, 0.08);
   --shadow: 0 30px 70px -35px rgba(20, 20, 40, 0.35);
   color-scheme: light;
 }
@@ -61,6 +77,17 @@
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
   --color-violet: var(--violet);
+  --color-device: var(--device);
+  --color-cv-paper: var(--cv-paper);
+  --color-cv-ink: var(--cv-ink);
+  --color-cv-band: var(--cv-band);
+  --color-cv-band-ink: var(--cv-band-ink);
+  --color-cv-accent: var(--cv-accent);
+  --color-cv-lime: var(--cv-lime);
+  --color-cv-rule: var(--cv-rule);
+  --color-cv-strip: var(--cv-strip);
+  --color-cv-soft: var(--cv-soft);
+  --color-cv-muted: var(--cv-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-instrument);
@@ -68,6 +95,7 @@
 
 html {
   overflow-x: clip;
+  scrollbar-color: var(--line-2) var(--bg);
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
@@ -96,20 +124,19 @@ body {
 .container-x {
   width: 100%;
   max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: 20px;
+    margin-inline: auto;
+    padding-inline: 20px;
 }
 @media (min-width: 768px) {
   .container-x {
-    padding-inline: 32px;
+        padding-inline: 32px;
   }
 }
 
+/* Small label voice: body face, a step smaller, sentence case, untracked */
 .eyebrow {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -120,29 +147,21 @@ body {
   letter-spacing: -0.01em;
 }
 
-.text-gradient {
-  background: linear-gradient(100deg, var(--ink) 20%, var(--accent) 55%, var(--violet) 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Signature hero: drifting aurora mesh (transform-only, GPU cheap) */
+/* Two fixed blooms at most per screen, never animated (atmospheric licence) */
 .aurora {
   position: absolute;
   inset: -20% -10% auto -10%;
   height: 120%;
   pointer-events: none;
   overflow: hidden;
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 40%, transparent 75%);
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, var(--mask) 40%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, var(--mask) 40%, transparent 75%);
 }
 .aurora span {
   position: absolute;
   border-radius: 9999px;
   filter: blur(70px);
-  will-change: transform;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 .aurora .a1 {
   width: 46vw;
@@ -151,8 +170,7 @@ body {
   max-height: 620px;
   left: 8%;
   top: 6%;
-  background: var(--glow-b);
-  animation: drift1 22s ease-in-out infinite alternate;
+  background: var(--glow-n);
 }
 .aurora .a2 {
   width: 38vw;
@@ -162,60 +180,12 @@ body {
   right: 6%;
   top: 0%;
   background: var(--glow-a);
-  animation: drift2 26s ease-in-out infinite alternate;
 }
-.aurora .a3 {
-  width: 34vw;
-  height: 34vw;
-  max-width: 460px;
-  max-height: 460px;
-  left: 38%;
-  top: 34%;
-  background: var(--glow-c);
-  animation: drift3 30s ease-in-out infinite alternate;
-}
-@keyframes drift1 {
-  to {
-    transform: translate3d(14vw, 8vh, 0) scale(1.15);
-  }
-}
-@keyframes drift2 {
-  to {
-    transform: translate3d(-16vw, 12vh, 0) scale(0.9);
-  }
-}
-@keyframes drift3 {
-  to {
-    transform: translate3d(-10vw, -10vh, 0) scale(1.2);
-  }
-}
-
-.grid-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 70%);
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 70%);
-}
-
-.noise::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-
 /* Marquee */
 .marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--mask) 10%, var(--mask) 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, var(--mask) 10%, var(--mask) 90%, transparent);
 }
 .marquee-track {
   display: flex;
@@ -236,26 +206,15 @@ body {
 }
 .spotlight {
   position: relative;
-  isolation: isolate;
+  transition: border-color 0.25s;
 }
-.spotlight::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 60%);
-}
-.spotlight:hover::before {
-  opacity: 1;
+.spotlight:hover {
+  border-color: var(--line-2);
 }
 
 .ring-glow {
-  background: conic-gradient(from var(--angle, 0deg), var(--accent), var(--violet), var(--cyan), var(--accent));
-  animation: ring-angle 6s linear infinite;
+  background: conic-gradient(from var(--angle, 0deg), var(--accent), transparent 30%, transparent 70%, var(--accent));
+  animation: ring-angle 12s linear infinite;
 }
 @property --angle {
   syntax: "<angle>";
@@ -271,20 +230,28 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-xs);
   height: 48px;
-  padding-inline: 22px;
+  padding-inline: var(--space-lg);
   border-radius: 9999px;
   font-weight: 500;
   font-size: 15px;
   transition:
     transform 0.2s,
-    background 0.2s,
+    background-color 0.2s,
     border-color 0.2s,
-    color 0.2s;
+    color 0.2s,
+    filter 0.2s;
 }
 .btn:active {
   transform: scale(0.97);
+}
+.btn:disabled,
+.btn[aria-disabled="true"],
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 .btn-primary {
   background: var(--accent);
@@ -306,8 +273,8 @@ body {
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: var(--space-xs);
+  padding: var(--space-2xs) var(--space-sm);
   border-radius: 9999px;
   border: 1px solid var(--line);
   background: var(--card-2);
@@ -320,7 +287,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .aurora span,
   .marquee-track,
   .ring-glow {
     animation: none !important;
@@ -331,12 +297,12 @@ body {
 @media print {
   @page {
     size: A4;
-    margin: 10mm 10mm;
+        margin: 10mm 10mm;
   }
   html,
   body {
-    background: #fff !important;
-    color: #111 !important;
+    background: var(--cv-paper) !important;
+    color: var(--cv-ink) !important;
   }
   .no-print {
     display: none !important;
@@ -344,38 +310,16 @@ body {
 }
 
 /* CV */
-.cv-h {
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #3f6300;
-  border-bottom: 1px solid #e3e3e3;
-  padding-bottom: 3px;
-  margin-bottom: 6px;
-}
 .cv-ul {
   list-style: disc;
-  padding-left: 18px;
-  margin-top: 2px;
+    padding-left: 20px;
+  margin-top: var(--space-3xs);
 }
 .cv-ul li + li {
-  margin-top: 2px;
+  margin-top: var(--space-3xs);
 }
 
 /* ---------- v2 interactions ---------- */
-.hero-spot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(600px circle at var(--hx, 70%) var(--hy, 30%), var(--accent-soft), transparent 55%);
-}
-.hero-spot > .container-x {
-  z-index: 2;
-}
-
 .float-a {
   animation: floaty 6s ease-in-out infinite;
 }
@@ -393,8 +337,8 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px;
+  gap: var(--space-md);
+  padding: var(--space-md);
   border-radius: 18px;
   border: 1px solid var(--line);
   background: var(--card-2);
@@ -417,17 +361,13 @@ body {
   border-radius: 16px;
   background: color-mix(in oklab, var(--brand) 14%, var(--card));
   border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.skill-tile:hover .skill-icon {
-  transform: scale(1.08) rotate(-4deg);
 }
 
 .logo-tile {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 22px 14px 14px;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-sm);
   border-radius: 20px;
   border: 1px solid var(--line);
   background: var(--card);
@@ -452,7 +392,7 @@ body {
   left: 0;
   width: 60px;
   height: 2px;
-  margin-top: -1px;
+    margin-top: -1px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
   animation: pipe 3.2s linear infinite;
 }
@@ -473,12 +413,12 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+    padding: 1px;
   pointer-events: none;
-  background: linear-gradient(140deg, color-mix(in oklab, var(--accent) 60%, transparent), transparent 35%, transparent 65%, color-mix(in oklab, var(--violet) 60%, transparent));
+  background: linear-gradient(140deg, color-mix(in oklab, var(--accent) 55%, transparent), transparent 35%, transparent 65%, color-mix(in oklab, var(--accent) 20%, transparent));
   -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+    linear-gradient(var(--mask) 0 0) content-box,
+    linear-gradient(var(--mask) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -500,7 +440,7 @@ body {
   .skill-tile {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: var(--space-sm);
   }
   .skill-icon {
     width: 48px;

@@ -12,7 +12,7 @@ export default function WorkPage() {
   return (
     <>
       <PageHeader
-        eyebrow={`${caseStudies.length + moreProjects.length} live projects`}
+        meta={`${caseStudies.length + moreProjects.length} live projects`}
         title="Real products,"
         accent="live on the web."
         sub="Six in-depth case studies, then more websites and stores. Every project is live, so open it and click around."

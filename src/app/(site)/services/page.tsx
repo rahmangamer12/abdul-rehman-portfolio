@@ -12,7 +12,6 @@ export default function ServicesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Services"
         title="What I can build"
         accent="for you."
         sub="From an AI agent that answers your customers to a full store in Arabic and English: designed, built, tested and deployed by one person."

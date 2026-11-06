@@ -6,11 +6,10 @@ export function AiBadge({ ai, className = "" }: { ai: AiRole; className?: string
   return (
     <span
       title={ai.job}
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${
+      className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[12px] font-semibold ${
         worker ? "border-accent/50 bg-accent text-accent-ink" : "border-violet/40 bg-violet/15 text-ink"
       } ${className}`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${worker ? "bg-accent-ink" : "bg-violet"}`} aria-hidden />
       {worker ? "AI worker" : "AI agent"}
     </span>
   );
@@ -28,20 +27,16 @@ export function AgentsVsWorkers({ id = "ai-workers" }: { id?: string }) {
     <section className="border-t border-line py-24 sm:py-32" aria-labelledby={`${id}-title`} id={id}>
       <div className="container-x">
         <Reveal className="mb-12 max-w-3xl sm:mb-16">
-          <p className="eyebrow mb-4 inline-flex items-center gap-2">
-            <span className="h-px w-8 bg-accent" />
-            AI agents vs AI workers
-          </p>
-          <h2 id={`${id}-title`} className="text-[clamp(2.3rem,5.8vw,4.4rem)] leading-[0.98] font-semibold tracking-[-0.04em]">
-            Agents answer. <span className="serif-i text-accent">Workers do the job.</span>
+          <h2 id={`${id}-title`} className="border-t border-line pt-6 text-[clamp(2.3rem,5.8vw,4.4rem)] leading-[0.98] font-semibold tracking-[-0.04em]">
+            Agents answer. <span className="block">Workers do the job.</span>
           </h2>
         </Reveal>
 
         <div className="grid gap-5 md:grid-cols-2">
           <Reveal className="h-full">
             <div className="card h-full p-7 sm:p-9">
-              <span className="inline-flex items-center gap-2 rounded-full border border-violet/40 bg-violet/15 px-3 py-1 text-xs font-semibold">
-                <span className="h-1.5 w-1.5 rounded-full bg-violet" aria-hidden /> AI agent
+              <span className="inline-flex items-center rounded-full border border-violet/40 bg-violet/15 px-3 py-1 text-xs font-semibold">
+                AI agent
               </span>
               <h3 className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">Does a task when you ask.</h3>
               <p className="mt-3 leading-relaxed text-muted">
@@ -51,8 +46,8 @@ export function AgentsVsWorkers({ id = "ai-workers" }: { id?: string }) {
           </Reveal>
           <Reveal className="h-full" delay={0.08}>
             <div className="card border-grad h-full p-7 sm:p-9">
-              <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-ink">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-ink" aria-hidden /> AI worker
+              <span className="inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-ink">
+                AI worker
               </span>
               <h3 className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">Owns one job and does it every day.</h3>
               <p className="mt-3 leading-relaxed text-muted">
@@ -66,7 +61,7 @@ export function AgentsVsWorkers({ id = "ai-workers" }: { id?: string }) {
         <Reveal className="mt-5">
           <div className="card overflow-hidden">
             <table className="w-full text-left text-[15px]">
-              <caption className="sr-only">AI agent compared with AI worker</caption>
+              <caption className="border-b border-line px-5 py-4 text-left text-base font-semibold sm:px-8">AI agents vs AI workers</caption>
               <thead>
                 <tr className="border-b border-line text-sm text-muted">
                   <th scope="col" className="w-[26%] px-5 py-4 font-medium sm:px-8" />
@@ -90,11 +85,10 @@ export function AgentsVsWorkers({ id = "ai-workers" }: { id?: string }) {
         </Reveal>
 
         <Reveal className="mt-5">
-          <div className="noise relative overflow-hidden rounded-3xl border border-accent/30 bg-accent-soft p-7 sm:p-9">
-            <p className="eyebrow text-accent">The simple test</p>
-            <p className="mt-3 text-xl leading-snug font-medium sm:text-2xl">
-              If you have to open a chat and ask every time, it&apos;s an agent.{" "}
-              <span className="serif-i text-accent">If the work gets done while you sleep, it&apos;s a worker.</span>
+          <div className="relative overflow-hidden rounded-3xl border border-accent/30 bg-accent-soft p-7 sm:p-9">
+            <p className="text-xl leading-snug font-medium sm:text-2xl">
+              <strong className="font-semibold text-accent">The simple test.</strong> If you have to open a chat and ask every time, it&apos;s an
+              agent. If the work gets done while you sleep, it&apos;s a worker.
             </p>
           </div>
         </Reveal>

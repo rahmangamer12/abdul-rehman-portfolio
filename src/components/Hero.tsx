@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { profile } from "@/lib/data";
-import { Arrow } from "./ui";
 import { Logo } from "./Logo";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -29,7 +28,7 @@ function RotatingWord() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.55, ease }}
-          className="serif-i text-accent col-start-1 row-start-1 whitespace-nowrap"
+          className="text-accent col-start-1 row-start-1 whitespace-nowrap"
         >
           {roles[i]}
         </motion.span>
@@ -108,24 +107,18 @@ export function Hero({ liveCount }: { liveCount: number }) {
     <section
       ref={ref}
       onPointerMove={onMove}
-      className="hero-spot noise relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24"
+      className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24"
       aria-labelledby="hero-title"
     >
       <div className="aurora" aria-hidden>
         <span className="a1" />
         <span className="a2" />
-        <span className="a3" />
       </div>
-      <div className="grid-bg" aria-hidden />
 
       <div className="container-x relative">
         <div className="grid items-center gap-14 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
           <div>
-            <motion.div {...up(0.05)} className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-card/60 py-1.5 pr-4 pl-2 backdrop-blur">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
-              </span>
+            <motion.div {...up(0.05)} className="mb-7 inline-flex items-center rounded-full border border-line bg-card px-4 py-1.5">
               <span className="text-[13px] text-muted">Available for new projects · {profile.location}</span>
             </motion.div>
 
@@ -148,7 +141,7 @@ export function Hero({ liveCount }: { liveCount: number }) {
                 {"Rehman".split("").map((c, i) => (
                   <motion.span
                     key={i}
-                    className="serif-i text-gradient inline-block pr-[0.04em]"
+                    className="inline-block"
                     initial={reduce ? false : { opacity: 0, y: "60%", rotate: 6 }}
                     animate={{ opacity: 1, y: 0, rotate: 0 }}
                     transition={{ duration: 0.9, delay: 0.35 + i * 0.05, ease }}
@@ -159,7 +152,7 @@ export function Hero({ liveCount }: { liveCount: number }) {
               </span>
             </h1>
 
-            <motion.p {...up(0.7)} className="mt-7 text-[13px] font-medium tracking-[0.18em] text-muted uppercase">
+            <motion.p {...up(0.7)} className="mt-7 text-[15px] font-medium text-muted">
               {profile.title}
             </motion.p>
             <motion.p {...up(0.8)} className="mt-3 text-[clamp(1.5rem,3.2vw,2.2rem)] leading-tight font-medium tracking-tight">
@@ -172,8 +165,8 @@ export function Hero({ liveCount }: { liveCount: number }) {
 
             <motion.div {...up(1)} className="mt-9 flex flex-wrap gap-3">
               <Magnetic>
-                <Link href="/contact" className="btn btn-primary shadow-[0_10px_40px_-10px_var(--accent)]">
-                  Hire me <Arrow />
+                <Link href="/contact" className="btn btn-primary">
+                  Hire me
                 </Link>
               </Magnetic>
               <Magnetic>
@@ -189,10 +182,10 @@ export function Hero({ liveCount }: { liveCount: number }) {
             </motion.div>
 
             <motion.div {...up(1.1)} className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <span className="eyebrow !text-[11px]">Builds with</span>
+              <span className="eyebrow">Builds with</span>
               <ul className="flex flex-wrap items-center gap-4">
                 {heroLogos.map((l) => (
-                  <li key={l} className="opacity-80 transition hover:scale-110 hover:opacity-100">
+                  <li key={l} className="opacity-80">
                     <Logo name={l} size={22} />
                   </li>
                 ))}
@@ -224,15 +217,15 @@ export function Hero({ liveCount }: { liveCount: number }) {
                 </div>
               </div>
             </TiltPhoto>
-            <div className="float-a absolute -left-3 top-10 rounded-2xl border border-line bg-card/85 px-4 py-3 shadow-[var(--shadow)] backdrop-blur-md sm:-left-8">
-              <p className="eyebrow !text-[10px]">Track</p>
+            <div className="float-a absolute -left-3 top-10 rounded-2xl border border-line bg-card px-4 py-3 shadow-[var(--shadow)] sm:-left-8">
+              <p className="eyebrow !text-[13px]">Track</p>
               <p className="text-sm font-semibold">Agentic AI · PIAIC</p>
             </div>
-            <div className="float-b absolute -right-2 top-[46%] rounded-2xl border border-line bg-card/85 px-4 py-3 shadow-[var(--shadow)] backdrop-blur-md sm:-right-8">
-              <p className="eyebrow !text-[10px]">Live builds</p>
+            <div className="float-b absolute -right-2 top-[46%] rounded-2xl border border-line bg-card px-4 py-3 shadow-[var(--shadow)] sm:-right-8">
+              <p className="eyebrow !text-[13px]">Live builds</p>
               <p className="text-2xl leading-none font-semibold tracking-tight">{liveCount}</p>
             </div>
-            <div className="float-a absolute -right-2 -bottom-5 flex items-center gap-2 sm:-right-6 rounded-full border border-line bg-card/90 py-2 pr-4 pl-2 shadow-[var(--shadow)] backdrop-blur-md">
+            <div className="float-a absolute -right-2 -bottom-5 flex items-center gap-2 sm:-right-6 rounded-full border border-line bg-card py-2 pr-4 pl-2 shadow-[var(--shadow)]">
               <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-[11px] font-bold text-accent-ink">V</span>
               <span className="text-sm font-medium">Founder, Velcarro</span>
             </div>

@@ -65,7 +65,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group card flex h-full flex-col overflow-hidden transition duration-300 hover:-translate-y-1.5 hover:border-line-2 hover:shadow-[var(--shadow)]"
+                className="group card flex h-full flex-col overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-line-2 hover:shadow-[var(--shadow)]"
               >
                 <div className="relative overflow-hidden border-b border-line bg-bg-2">
                   <Image
@@ -74,9 +74,9 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                     width={1440}
                     height={900}
                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                    className="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.05]"
+                    className="aspect-[16/10] w-full object-cover object-top"
                   />
-                  <span className="absolute top-3 left-3 rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
+                  <span className="absolute top-3 left-3 rounded-full border border-line bg-bg px-3 py-1 text-[12px] font-medium text-ink">
                     {p.category}
                   </span>
                   <span className="absolute top-3 right-3 grid h-9 w-9 translate-y-1 place-items-center rounded-full bg-accent text-accent-ink opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
@@ -92,7 +92,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
                   {p.ai && <p className="mt-3 text-[13px] leading-relaxed text-faint">{p.ai.job}</p>}
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {p.tags.map((t) => (
-                      <li key={t} className="rounded-full border border-line px-2.5 py-1 text-[11px] text-muted">
+                      <li key={t} className="rounded-full border border-line px-2.5 py-1 text-[12px] text-muted">
                         {t}
                       </li>
                     ))}
@@ -115,10 +115,10 @@ export function ProcessTimeline() {
   return (
     <ol ref={ref} className="relative grid gap-6 lg:grid-cols-4 lg:gap-5">
       <div aria-hidden className="absolute top-[27px] right-[12%] left-[12%] hidden h-[2px] bg-line lg:block">
-        <motion.div className="h-full origin-left bg-gradient-to-r from-accent to-violet" style={{ scaleX: reduce ? 1 : fill }} />
+        <motion.div className="h-full origin-left bg-accent" style={{ scaleX: reduce ? 1 : fill }} />
       </div>
       <div aria-hidden className="absolute top-2 bottom-2 left-[27px] w-[2px] bg-line lg:hidden">
-        <motion.div className="w-full origin-top bg-gradient-to-b from-accent to-violet" style={{ scaleY: reduce ? 1 : fill, height: "100%" }} />
+        <motion.div className="w-full origin-top bg-accent" style={{ scaleY: reduce ? 1 : fill, height: "100%" }} />
       </div>
       {steps.map((s, i) => (
         <motion.li
@@ -129,7 +129,7 @@ export function ProcessTimeline() {
           transition={{ duration: 0.6, delay: i * 0.12 }}
           className="relative flex gap-5 lg:flex-col lg:items-center lg:text-center"
         >
-          <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-line bg-card font-mono text-sm font-semibold text-accent shadow-[var(--shadow)]">
+          <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-line bg-card text-base font-semibold text-accent tabular-nums shadow-[var(--shadow)]">
             {s.n}
           </span>
           <div className="card flex-1 p-6 lg:w-full">

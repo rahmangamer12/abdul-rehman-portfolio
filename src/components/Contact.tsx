@@ -30,9 +30,8 @@ export function Contact({ page = false }: { page?: boolean }) {
     <section className="border-t border-line py-24 sm:py-32" aria-labelledby="contact-title" id="contact">
       <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
-          <p className="eyebrow mb-4">Contact</p>
           <Heading id="contact-title" className="text-[clamp(2.6rem,7vw,5.2rem)] leading-[0.95] font-semibold tracking-[-0.04em]">
-            Have an idea? <span className="serif-i text-gradient block">Let&apos;s build it.</span>
+            Have an idea? <span className="block">Let&apos;s build it.</span>
           </Heading>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
             Tell me what you need: an AI agent, a SaaS app, a store or a website.
@@ -106,7 +105,7 @@ export function Contact({ page = false }: { page?: boolean }) {
               <textarea name="message" required rows={5} className={`${input} resize-y`} placeholder="What are you building, and by when?" />
             </label>
             <button type="submit" className="btn btn-primary mt-6 w-full justify-center">
-              Send message <Arrow />
+              Send message
             </button>
             <p id="form-note" className="mt-4 text-center text-[13px] text-faint" role="status">
               {sent ? "Your email app should open with the message ready. If it didn't, write to " + profile.email : "Opens your email app with the message filled in."}

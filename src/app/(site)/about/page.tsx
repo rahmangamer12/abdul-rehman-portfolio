@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHeader eyebrow="About" title="Builder first," accent="always shipping." />
+      <PageHeader title="Builder first," accent="always shipping." />
       <div className="-mt-10 sm:-mt-16">
         <About head={false} />
       </div>
