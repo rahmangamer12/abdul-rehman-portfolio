@@ -331,7 +331,7 @@ body {
 @media print {
   @page {
     size: A4;
-    margin: 14mm 14mm;
+    margin: 10mm 10mm;
   }
   html,
   body {
@@ -361,4 +361,149 @@ body {
 }
 .cv-ul li + li {
   margin-top: 2px;
+}
+
+/* ---------- v2 interactions ---------- */
+.hero-spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(600px circle at var(--hx, 70%) var(--hy, 30%), var(--accent-soft), transparent 55%);
+}
+.hero-spot > .container-x {
+  z-index: 2;
+}
+
+.float-a {
+  animation: floaty 6s ease-in-out infinite;
+}
+.float-b {
+  animation: floaty 7s ease-in-out -2s infinite;
+}
+@keyframes floaty {
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+/* Skill tiles: --brand is set inline per tile */
+.skill-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.skill-tile:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--brand) 55%, transparent);
+  box-shadow: 0 18px 40px -18px color-mix(in oklab, var(--brand) 70%, transparent);
+}
+.skill-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--brand) 14%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.skill-tile:hover .skill-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.logo-tile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px 14px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  white-space: nowrap;
+}
+
+.marquee-rev {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Pipeline dot */
+.pipe {
+  position: relative;
+}
+.pipe::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  margin-top: -1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: pipe 3.2s linear infinite;
+}
+@keyframes pipe {
+  from {
+    transform: translateX(-60px);
+  }
+  to {
+    transform: translateX(var(--pipe-w, 600px));
+  }
+}
+
+.border-grad {
+  position: relative;
+}
+.border-grad::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(140deg, color-mix(in oklab, var(--accent) 60%, transparent), transparent 35%, transparent 65%, color-mix(in oklab, var(--violet) 60%, transparent));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-a,
+  .float-b,
+  .pipe::after {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .skill-tile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+  }
 }

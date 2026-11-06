@@ -125,74 +125,13 @@ export type Project = {
   image: string;
   blurb: string;
   tags: string[];
+  category: "WordPress" | "Web app" | "Store";
 };
 
 export const moreProjects: Project[] = [
   {
-    name: "Renewlo",
-    url: "https://renewlo.vercel.app",
-    image: "/work/renewlo.jpg",
-    blurb: "Never miss a renewal: health cards, licences, Istimara and contracts in one list, with WhatsApp reminders.",
-    tags: ["Next.js", "Neon", "Clerk", "PWA"],
-  },
-  {
-    name: "Gap Atlas 2026",
-    url: "https://gap-atlas-3d.vercel.app",
-    image: "/work/gap-atlas.jpg",
-    blurb: "64 real unsolved problems found and checked by a 303-agent AI research run, on an interactive 3D globe.",
-    tags: ["React", "Three.js", "AI agents"],
-  },
-  {
-    name: "Tarjuman",
-    url: "https://tarjuman-web.vercel.app",
-    image: "/work/tarjuman.jpg",
-    blurb: "My own translator for Arabic, Farsi and Urdu chats: Android app, Chrome extension and web app.",
-    tags: ["Kotlin", "Chrome extension", "AI"],
-  },
-  {
-    name: "Rayyan Fragrance",
-    url: "https://rayyan-fragrance.vercel.app",
-    image: "/work/rayyan.jpg",
-    blurb: "Perfume store with EasyPaisa / JazzCash checkout, coupons, admin and a 3D product view.",
-    tags: ["Next.js 16", "Supabase", "Clerk", "Three.js"],
-  },
-  {
-    name: "Inkora",
-    url: "https://inkorastudio.vercel.app",
-    image: "/work/inkora.jpg",
-    blurb: "Design your own tee, hoodie, cap or mug with AI ideas and Urdu fonts, printed and delivered in Pakistan.",
-    tags: ["Next.js", "Neon", "AI designer"],
-  },
-  {
-    name: "Zayvra",
-    url: "https://zayvra.vercel.app",
-    image: "/work/zayvra.jpg",
-    blurb: "Fashion store for stitched and unstitched clothing, shoes and watches, with an advanced admin.",
-    tags: ["Next.js", "Neon", "Clerk"],
-  },
-  {
-    name: "K TECH Printing",
-    url: "https://ktechprinting.vercel.app",
-    image: "/work/ktech.jpg",
-    blurb: "Thermal paper and POS supplies store with product variants and WhatsApp ordering.",
-    tags: ["Next.js", "Neon", "E-commerce"],
-  },
-  {
-    name: "AD Online Store",
-    url: "https://ad-online-store.vercel.app",
-    image: "/work/ad-store.jpg",
-    blurb: "Personalised gifts store: mugs, tees, keychains and frames made with your name or photo.",
-    tags: ["Next.js", "E-commerce"],
-  },
-  {
-    name: "MS Customize",
-    url: "https://ms-customize.vercel.app",
-    image: "/work/ms-customize.jpg",
-    blurb: "Custom gifts collection store with dark and light themes and WhatsApp checkout.",
-    tags: ["Next.js", "E-commerce"],
-  },
-  {
     name: "Diwan Golconda",
+    category: "WordPress",
     url: "https://wordpress-1620210-6758184.cloudwaysapps.com/",
     image: "/work/diwan.jpg",
     blurb: "Bilingual English / Arabic restaurant website for a Hyderabadi restaurant in Qatar.",
@@ -200,10 +139,67 @@ export const moreProjects: Project[] = [
   },
   {
     name: "Momocha Hibachi",
+    category: "WordPress",
     url: "https://wordpress-1620210-6757380.cloudwaysapps.com/",
     image: "/work/momocha.jpg",
     blurb: "Restaurant website with online pickup ordering and a live kitchen screen for staff.",
     tags: ["WordPress", "Elementor", "PHP"],
+  },
+  {
+    name: "Renewlo",
+    category: "Web app",
+    url: "https://renewlo.vercel.app",
+    image: "/work/renewlo.jpg",
+    blurb: "Never miss a renewal: health cards, licences, Istimara and contracts in one list, with WhatsApp reminders.",
+    tags: ["Next.js", "Neon", "Clerk", "PWA"],
+  },
+  {
+    name: "Rayyan Fragrance",
+    category: "Store",
+    url: "https://rayyan-fragrance.vercel.app",
+    image: "/work/rayyan.jpg",
+    blurb: "Perfume store with EasyPaisa / JazzCash checkout, coupons, admin and a 3D product view.",
+    tags: ["Next.js 16", "Supabase", "Clerk", "Three.js"],
+  },
+  {
+    name: "Inkora",
+    category: "Store",
+    url: "https://inkorastudio.vercel.app",
+    image: "/work/inkora.jpg",
+    blurb: "Design your own tee, hoodie, cap or mug with AI ideas and Urdu fonts, printed and delivered in Pakistan.",
+    tags: ["Next.js", "Neon", "AI designer"],
+  },
+  {
+    name: "Zayvra",
+    category: "Store",
+    url: "https://zayvra.vercel.app",
+    image: "/work/zayvra.jpg",
+    blurb: "Fashion store for stitched and unstitched clothing, shoes and watches, with an advanced admin.",
+    tags: ["Next.js", "Neon", "Clerk"],
+  },
+  {
+    name: "K TECH Printing",
+    category: "Store",
+    url: "https://ktechprinting.vercel.app",
+    image: "/work/ktech.jpg",
+    blurb: "Thermal paper and POS supplies store with product variants and WhatsApp ordering.",
+    tags: ["Next.js", "Neon", "E-commerce"],
+  },
+  {
+    name: "AD Online Store",
+    category: "Store",
+    url: "https://ad-online-store.vercel.app",
+    image: "/work/ad-store.jpg",
+    blurb: "Personalised gifts store: mugs, tees, keychains and frames made with your name or photo.",
+    tags: ["Next.js", "E-commerce"],
+  },
+  {
+    name: "MS Customize",
+    category: "Store",
+    url: "https://ms-customize.vercel.app",
+    image: "/work/ms-customize.jpg",
+    blurb: "Custom gifts collection store with dark and light themes and WhatsApp checkout.",
+    tags: ["Next.js", "E-commerce"],
   },
 ];
 
@@ -212,31 +208,94 @@ export const services = [
     title: "AI agents & automations",
     body: "Assistants, copilots and workflows built with the OpenAI Agents SDK, Claude and MCP: tools that read your data, take actions and hand off to a human when they should.",
     points: ["Custom AI agents & tools", "MCP servers & integrations", "Multi-model fallback"],
+    logos: ["claude", "mcp", "gemini", "python"],
   },
   {
     title: "Next.js SaaS & web apps",
     body: "Production apps with auth, billing, dashboards, admin panels and a real database, deployed on Vercel and built to keep running.",
     points: ["Auth, billing & roles", "Postgres / Neon / Supabase", "Tested & monitored"],
+    logos: ["nextjs", "typescript", "neon", "vercel"],
   },
   {
     title: "E-commerce stores",
     body: "Fast, good-looking stores with checkout, admin, WhatsApp ordering, local payments and multi-language or Arabic RTL support.",
     points: ["Catalogue, cart & checkout", "EN / AR / UR, full RTL", "Local payment methods"],
+    logos: ["react", "supabase", "clerk", "whatsapp"],
   },
   {
     title: "WordPress websites",
     body: "Business and restaurant sites on WordPress with Elementor or Divi, plus a custom child theme so the owner can edit everything.",
     points: ["Elementor & Divi", "Custom child themes", "Owner-editable content"],
+    logos: ["wordpress", "elementor", "php", "cloudflare"],
   },
 ];
 
-export const stackGroups = [
-  { label: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion"] },
-  { label: "Backend & data", items: ["Node.js", "Python", "Prisma", "Postgres / Neon", "Supabase", "Drizzle"] },
-  { label: "AI", items: ["OpenAI Agents SDK", "Claude", "MCP", "Gemini", "Groq", "Whisper"] },
-  { label: "Auth & payments", items: ["Clerk", "Better Auth", "Polar"] },
-  { label: "Ship & CMS", items: ["Vercel", "GitHub", "WordPress", "Elementor", "Divi"] },
+export type Skill = { name: string; icon: string; note: string };
+
+export const skillGroups: { label: string; blurb: string; items: Skill[] }[] = [
+  {
+    label: "Frontend",
+    blurb: "Fast, accessible interfaces",
+    items: [
+      { name: "Next.js", icon: "nextjs", note: "App Router, RSC" },
+      { name: "React", icon: "react", note: "React 19" },
+      { name: "TypeScript", icon: "typescript", note: "Strict, end to end" },
+      { name: "Tailwind CSS", icon: "tailwind", note: "v4 design systems" },
+      { name: "Motion", icon: "framer", note: "Animation" },
+      { name: "Three.js", icon: "threejs", note: "3D on the web" },
+    ],
+  },
+  {
+    label: "Backend & data",
+    blurb: "Real databases, real auth",
+    items: [
+      { name: "Node.js", icon: "node", note: "APIs & workers" },
+      { name: "Python", icon: "python", note: "Scripts & AI" },
+      { name: "PostgreSQL", icon: "postgres", note: "SQL, cron, queues" },
+      { name: "Neon", icon: "neon", note: "Serverless Postgres" },
+      { name: "Supabase", icon: "supabase", note: "DB & storage" },
+      { name: "Prisma", icon: "prisma", note: "ORM & migrations" },
+      { name: "Drizzle", icon: "drizzle", note: "Type-safe SQL" },
+    ],
+  },
+  {
+    label: "AI & agents",
+    blurb: "Agents that take action",
+    items: [
+      { name: "OpenAI Agents SDK", icon: "openai", note: "Agents & tools" },
+      { name: "Claude", icon: "claude", note: "Anthropic models" },
+      { name: "MCP", icon: "mcp", note: "Model Context Protocol" },
+      { name: "Gemini", icon: "gemini", note: "Google AI" },
+      { name: "Groq", icon: "groq", note: "Fast inference, Whisper" },
+    ],
+  },
+  {
+    label: "Auth, payments & ship",
+    blurb: "From login to live URL",
+    items: [
+      { name: "Clerk", icon: "clerk", note: "Auth & users" },
+      { name: "Better Auth", icon: "betterauth", note: "Self-hosted auth" },
+      { name: "Polar", icon: "polar", note: "Subscriptions" },
+      { name: "Vercel", icon: "vercel", note: "Deploys & edge" },
+      { name: "GitHub", icon: "github", note: "Git & CI" },
+      { name: "Cloudflare", icon: "cloudflare", note: "DNS & email routing" },
+    ],
+  },
+  {
+    label: "WordPress",
+    blurb: "Sites owners can edit",
+    items: [
+      { name: "WordPress", icon: "wordpress", note: "Custom child themes" },
+      { name: "Elementor", icon: "elementor", note: "Page builder" },
+      { name: "Divi", icon: "divi", note: "Theme builder" },
+      { name: "PHP", icon: "php", note: "Theme & plugin code" },
+    ],
+  },
 ];
+
+export const highlights = {
+  pipeline: ["UI", "Database", "Auth", "Payments", "AI", "Deploy"],
+};
 
 export const steps = [
   { n: "01", title: "Understand", body: "A short call or chat to learn the business, the users and what success looks like. I write it down as a clear brief." },

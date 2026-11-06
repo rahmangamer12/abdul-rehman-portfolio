@@ -119,23 +119,37 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="no-print border-t border-line py-10">
-      <div className="container-x flex flex-col items-center justify-between gap-6 text-sm text-muted md:flex-row">
-        <p>© 2026 Abdul Rehman · Karachi, Pakistan</p>
-        <nav aria-label="Social" className="flex items-center gap-2">
-          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="grid h-10 w-10 place-items-center rounded-full border border-line hover:text-ink">
-            <GitHubIcon />
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full border border-line hover:text-ink">
-            <LinkedInIcon />
-          </a>
-          <a href={`mailto:${profile.email}`} aria-label="Email" className="grid h-10 w-10 place-items-center rounded-full border border-line hover:text-ink">
-            <MailIcon />
-          </a>
-          <a href={profile.undercraft} target="_blank" rel="noopener noreferrer" className="ml-2 rounded-full border border-line px-4 py-2 hover:text-ink">
-            Undercraft Studio
-          </a>
-        </nav>
+    <footer className="no-print relative overflow-hidden border-t border-line pt-14 pb-8">
+      <div className="container-x">
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          <div>
+            <p className="text-2xl font-semibold tracking-tight">Let&apos;s build something real.</p>
+            <a href={`mailto:${profile.email}`} className="mt-1 inline-block text-muted underline-offset-4 hover:text-accent hover:underline">
+              {profile.email}
+            </a>
+          </div>
+          <nav aria-label="Social" className="flex flex-wrap items-center gap-2">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-ink">
+              <GitHubIcon />
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-ink">
+              <LinkedInIcon />
+            </a>
+            <a href={`mailto:${profile.email}`} aria-label="Email" className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-ink">
+              <MailIcon />
+            </a>
+            <a href={profile.undercraft} target="_blank" rel="noopener noreferrer" className="ml-1 rounded-full border border-line px-4 py-2.5 text-sm text-muted transition hover:border-accent hover:text-ink">
+              Undercraft Studio
+            </a>
+          </nav>
+        </div>
+        <p aria-hidden className="outline-text mt-12 text-center text-[clamp(3.5rem,15vw,13rem)] leading-[0.8] font-semibold tracking-[-0.05em] select-none">
+          Abdul Rehman
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 text-sm text-faint sm:flex-row">
+          <p>© 2026 Abdul Rehman · Karachi, Pakistan</p>
+          <p>Built with Next.js, Tailwind CSS and Motion</p>
+        </div>
       </div>
     </footer>
   );

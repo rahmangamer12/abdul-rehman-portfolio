@@ -7,7 +7,7 @@ import { ThemeToggle } from "./ui";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/#services", label: "Services" },
-  { href: "/#process", label: "Process" },
+  { href: "/#stack", label: "Skills" },
   { href: "/#about", label: "About" },
   { href: "/cv", label: "CV" },
 ];

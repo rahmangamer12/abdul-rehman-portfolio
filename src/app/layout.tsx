@@ -72,7 +72,7 @@ const jsonLd = {
   name: profile.name,
   jobTitle: profile.title,
   url: SITE_URL,
-  image: `${SITE_URL}/abdul-rehman.jpg`,
+  image: `${SITE_URL}/abdul-rehman-glasses.jpg`,
   address: { "@type": "PostalAddress", addressLocality: "Karachi", addressCountry: "PK" },
   worksFor: [
     { "@type": "Organization", name: "Undercraft Studio", url: profile.undercraft },
